@@ -121,9 +121,9 @@ public class HomeWork_04 {
         int x, y;
 
         do {
-            System.out.println("Введите координаты в формате X Y");
-            x = sc.nextInt() - 1;
+            System.out.println("Введите координаты в формате: Y X");
             y = sc.nextInt() - 1;
+            x = sc.nextInt() - 1;
         } while (!isCellValid(x, y));
 
         map[y][x] = DOT_X;
