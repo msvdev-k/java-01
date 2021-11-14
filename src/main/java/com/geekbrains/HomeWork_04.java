@@ -22,6 +22,39 @@ public class HomeWork_04 {
     public static final char DOT_X = 'X';
     public static final char DOT_O = 'O';
 
+    /* Константы, определяющие направления на игровом поле.
+
+       Четыре основных румба:
+        NORTH - Север
+        EAST  - Восток
+        SOUTH - Юг
+        WEST  - Запад
+
+       Четыре румба, производных от основных:
+        NORTH_WEST — Северо-запад
+        NORTH_EAST — Северо-восток
+        SOUTH_EAST — Юго-восток
+        SOUTH_WEST — Юго-запад
+
+       Направление от юга к северу соответствует увеличению координаты Y.
+       Направление с запада на восток соответствует увеличению координаты X.
+
+        NORTH_WEST  NORTH  NORTH_EAST     Y ^
+              WEST         EAST             |
+        SOUTH_WEST  SOUTH  SOUTH_EAST       |--->
+                                                X
+     */
+    public static final int NORTH = 0;
+    public static final int EAST  = 1;
+    public static final int SOUTH = 2;
+    public static final int WEST  = 3;
+    public static final int NORTH_WEST = 4;
+    public static final int NORTH_EAST = 5;
+    public static final int SOUTH_EAST = 6;
+    public static final int SOUTH_WEST = 7;
+
+
+
 
     public static void main(String[] args) {
 
