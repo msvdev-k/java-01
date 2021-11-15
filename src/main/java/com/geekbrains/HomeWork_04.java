@@ -13,8 +13,8 @@ public class HomeWork_04 {
      */
     public static char[][] map;
     public static final int SIZE = 3;
-    public static final int SIZE_X = SIZE;
-    public static final int SIZE_Y = SIZE;
+    public static final int SIZE_X = 5;
+    public static final int SIZE_Y = 4;
     public static final int DOTS_TO_WIN = 3;
 
     /* Ячейки поля.
@@ -255,10 +255,10 @@ public class HomeWork_04 {
      */
     public static void initMap() {
 
-        map = new char[SIZE][SIZE];
+        map = new char[SIZE_Y][SIZE_X];
 
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++) {
+        for (int i = 0; i < SIZE_Y; i++) {
+            for (int j = 0; j < SIZE_X; j++) {
                 map[i][j] = DOT_EMPTY;
             }
         }
@@ -269,16 +269,16 @@ public class HomeWork_04 {
      */
     public static void printMap() {
 
-        for (int i = 0; i <= SIZE; i++) {
+        for (int i = 0; i <= SIZE_X; i++) {
             System.out.print(i + " ");
         }
         System.out.println();
 
-        for (int i = 0; i < SIZE; i++) {
+        for (int i = 0; i < SIZE_Y; i++) {
 
             System.out.print((i + 1) + " ");
 
-            for (int j = 0; j < SIZE; j++) {
+            for (int j = 0; j < SIZE_X; j++) {
                 System.out.print(map[i][j] + " ");
             }
             System.out.println();
@@ -292,8 +292,8 @@ public class HomeWork_04 {
      */
     public static boolean isMapFull() {
 
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++) {
+        for (int i = 0; i < SIZE_Y; i++) {
+            for (int j = 0; j < SIZE_X; j++) {
                 if (map[i][j] == DOT_EMPTY) return false;
             }
         }
@@ -323,7 +323,7 @@ public class HomeWork_04 {
      */
     public static boolean isCellValid(int x, int y) {
 
-        if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) return false;
+        if (x < 0 || x >= SIZE_X || y < 0 || y >= SIZE_Y) return false;
         if (map[y][x] == DOT_EMPTY) return true;
         return false;
     }
@@ -339,8 +339,8 @@ public class HomeWork_04 {
         int x, y;
 
         do {
-            x = rand.nextInt(SIZE);
-            y = rand.nextInt(SIZE);
+            x = rand.nextInt(SIZE_X);
+            y = rand.nextInt(SIZE_Y);
         } while (!isCellValid(x, y));
 
         System.out.println("Компьютер походил в точку " + (x + 1) + " " + (y + 1));
