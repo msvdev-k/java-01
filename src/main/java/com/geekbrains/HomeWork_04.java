@@ -354,16 +354,22 @@ public class HomeWork_04 {
      вернуть true. В приведённом ниже варианте производится проверка всех возможных
       омбинаций с помощью 8 условий.
      */
-    public static boolean checkWin(char symb) {
+    public static boolean checkWin(char symbol) {
 
-        if(map[0][0] == symb && map[0][1] == symb && map[0][2] == symb) return true;
-        if(map[1][0] == symb && map[1][1] == symb && map[1][2] == symb) return true;
-        if(map[2][0] == symb && map[2][1] == symb && map[2][2] == symb) return true;
-        if(map[0][0] == symb && map[1][0] == symb && map[2][0] == symb) return true;
-        if(map[0][1] == symb && map[1][1] == symb && map[2][1] == symb) return true;
-        if(map[0][2] == symb && map[1][2] == symb && map[2][2] == symb) return true;
-        if(map[0][0] == symb && map[1][1] == symb && map[2][2] == symb) return true;
-        if(map[2][0] == symb && map[1][1] == symb && map[0][2] == symb) return true;
+        for (int i = 0; i < SIZE_Y; i++) {
+            for (int j = 0; j < SIZE_X; j++) {
+
+                if  (map[i][j] == symbol) {
+
+                    int[] arr = numberOfMatchesAlongDirections(j, i);
+
+                    if (arr[WEST] + arr[EAST] + 1 >= DOTS_TO_WIN) return true;
+                    if (arr[SOUTH] + arr[NORTH] + 1 >= DOTS_TO_WIN) return true;
+                    if (arr[NORTH_WEST] + arr[SOUTH_EAST] + 1 >= DOTS_TO_WIN) return true;
+                    if (arr[NORTH_EAST] + arr[SOUTH_WEST] + 1 >= DOTS_TO_WIN) return true;
+                }
+            }
+        }
 
         return false;
     }
