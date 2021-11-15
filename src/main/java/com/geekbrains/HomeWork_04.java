@@ -13,6 +13,8 @@ public class HomeWork_04 {
      */
     public static char[][] map;
     public static final int SIZE = 3;
+    public static final int SIZE_X = SIZE;
+    public static final int SIZE_Y = SIZE;
     public static final int DOTS_TO_WIN = 3;
 
     /* Ячейки поля.
@@ -92,6 +94,159 @@ public class HomeWork_04 {
         }
         System.out.println("Игра закончена");
     }
+
+
+    /**
+     * Метод, подсчитывающий количество идущих друг за другом идентичных элементов
+     * на игровом поле вдоль соответствующих направлений. Идентичными считаются те
+     * элементы, которые совпадают с центральным элементом.
+     * @param x Координата центрального элемента вдоль оси X (от 0 до SIZE_X - 1).
+     * @param y Координата центрального элемента вдоль оси Y (от 0 до SIZE_Y - 1).
+     * @return Массив содержащий количество идущих друг за другом идентичных элементов
+     *         вдоль всех 8-ми направлений. Индексы направлений в массиве определяются
+     *         соответствующими константами (NORTH, EAST,SOUTH, WEST, NORTH_WEST,
+     *         NORTH_EAST, SOUTH_EAST, SOUTH_WEST).
+     */
+    public static int[] numberOfMatchesAlongDirections(int x, int y) {
+
+        int[] arr = new int[8];
+
+        boolean north = true;
+        boolean east  = true;
+        boolean south = true;
+        boolean west  = true;
+        boolean north_west = true;
+        boolean north_east = true;
+        boolean south_east = true;
+        boolean south_west = true;
+
+        int shift = 1;
+
+        while (north || east || south || west ||
+               north_west || north_east || south_east || south_west) {
+
+            int xMin = x - shift;
+            int xMax = x + shift;
+            int yMin = y - shift;
+            int yMax = y + shift;
+
+
+            if (xMin >= 0) {
+                if (west && map[y][x] != map[y][xMin]) {
+                    arr[WEST] = shift - 1;
+                    west = false;
+                }
+            }
+            else {
+                if (west) {
+                    arr[WEST] = shift - 1;
+                    west = false;
+                }
+                if (north_west) {
+                    arr[NORTH_WEST] = shift - 1;
+                    north_west = false;
+                }
+                if (south_west) {
+                    arr[SOUTH_WEST] = shift - 1;
+                    south_west = false;
+                }
+            }
+
+
+            if (xMax < SIZE_X) {
+                if (east && map[y][x] != map[y][xMax]) {
+                    arr[EAST] = shift - 1;
+                    east = false;
+                }
+            }
+            else {
+                if (east) {
+                    arr[EAST] = shift - 1;
+                    east = false;
+                }
+                if (north_east) {
+                    arr[NORTH_EAST] = shift - 1;
+                    north_east = false;
+                }
+                if (south_east) {
+                    arr[SOUTH_EAST] = shift - 1;
+                    south_east = false;
+                }
+            }
+
+
+            if (yMin >= 0) {
+                if (south && map[y][x] != map[yMin][x]) {
+                    arr[SOUTH] = shift - 1;
+                    south = false;
+                }
+            }
+            else {
+                if (south) {
+                    arr[SOUTH] = shift - 1;
+                    south = false;
+                }
+                if (south_west) {
+                    arr[SOUTH_WEST] = shift - 1;
+                    south_west = false;
+                }
+                if (south_east) {
+                    arr[SOUTH_EAST] = shift - 1;
+                    south_east = false;
+                }
+            }
+
+
+            if (yMax < SIZE_Y) {
+                if (north && map[y][x] != map[yMax][x]) {
+                    arr[NORTH] = shift - 1;
+                    north = false;
+                }
+            }
+            else {
+                if (north) {
+                    arr[NORTH] = shift - 1;
+                    north = false;
+                }
+                if (north_west) {
+                    arr[NORTH_WEST] = shift - 1;
+                    north_west = false;
+                }
+                if (north_east) {
+                    arr[NORTH_EAST] = shift - 1;
+                    north_east = false;
+                }
+            }
+
+
+            if (north_west && map[y][x] != map[yMax][xMin]) {
+                arr[NORTH_WEST] = shift - 1;
+                north_west = false;
+            }
+
+            if (north_east && map[y][x] != map[yMax][xMax]) {
+                arr[NORTH_EAST] = shift - 1;
+                north_east = false;
+            }
+
+            if (south_west && map[y][x] != map[yMin][xMin]) {
+                arr[SOUTH_WEST] = shift - 1;
+                south_west = false;
+            }
+
+            if (south_east && map[y][x] != map[yMin][xMax]) {
+                arr[SOUTH_EAST] = shift - 1;
+                south_east = false;
+            }
+
+
+            shift++;
+        }
+
+
+        return arr;
+    }
+
 
 
     /* Инициализация поля.
