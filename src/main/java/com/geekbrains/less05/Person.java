@@ -61,6 +61,30 @@ public class Person {
         return this.age;
     }
 
-    
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setFunction(String function) {
+        this.function = function;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
 
 }
