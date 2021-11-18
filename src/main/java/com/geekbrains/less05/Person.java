@@ -24,8 +24,18 @@ public class Person {
     }
 
 
+    /* Внутри класса «Сотрудник» написать метод, который выводит информацию об объекте в консоль.*/
+    public void printInfo() {
 
-    
+        System.out.println("ФИО сотрудника: " + this.name);
+        System.out.println("Должность: " + this.function);
+        System.out.println("Электронная почта: " + this.email);
+        System.out.println("Телефон: " + this.phone);
+        System.out.println("Зарплата: " + this.salary);
+        System.out.println("Возраст: " + this.age);
+
+    }
+
 
 
 
