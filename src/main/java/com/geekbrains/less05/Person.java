@@ -37,6 +37,30 @@ public class Person {
     }
 
 
+    public String getName() {
+        return this.name;
+    }
 
+    public String getFunction() {
+        return this.function;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public String getPhone() {
+        return this.phone;
+    }
+
+    public double getSalary() {
+        return this.salary;
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+
+    
 
 }
