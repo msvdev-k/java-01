@@ -11,6 +11,20 @@ public class Person {
     private double salary;
     private int age;
 
+    /* Конструктор класса должен заполнять эти поля при создании объекта.*/
+    public Person(String name, String function, String email, String phone, double salary, int age) {
+
+        this.name = name;
+        this.function = function;
+        this.email = email;
+        this.phone = phone;
+        this.salary = salary;
+        this.age = age;
+
+    }
+
+
+
     
 
 
