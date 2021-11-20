@@ -22,11 +22,11 @@ public class Main {
         staff[4] = new Person("Берестов Н.А.", "Ведущий инженер", "berestov@mailbox.com", "892312376", 80000, 47);
 
 
-        for (int i = 0; i < 5; i++) {
-            if (staff[i].getAge() > 40) {
+        for (Person person: staff) {
+            if (person.getAge() > 40) {
 
                 System.out.println("--------------");
-                staff[i].printInfo();
+                person.printInfo();
 
             }
         }
