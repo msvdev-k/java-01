@@ -49,7 +49,7 @@ public class Animal {
             System.out.println(name + " проплыл(а) " + dist + " м.");
         }
         else if (maxSwimDist > 0) {
-            System.out.println(name + " проплал(а) " + maxRunDist + " м.");
+            System.out.println(name + " проплыл(а) " + maxSwimDist + " м.");
         }
         else {
             System.out.println(name + " не умеет плавать!");
@@ -59,7 +59,7 @@ public class Animal {
 
 
 
-    public static int getAnimalCount() {
+    public static int getCount() {
         return animalCount;
     }
 
