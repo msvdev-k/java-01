@@ -59,7 +59,7 @@ public class Animal {
 
 
 
-    public static int getCount() {
+    public static int count() {
         return animalCount;
     }
 

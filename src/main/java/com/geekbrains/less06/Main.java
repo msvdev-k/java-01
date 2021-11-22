@@ -3,7 +3,7 @@ package com.geekbrains.less06;
 public class Main {
     public static void main(String[] args) {
 
-        Animal[] animals = new Animal[10];
+        Animal[] animals = new Animal[9];
 
         animals[0] = new Dog("Дружёк");
         animals[1] = new Dog("Мухтар");
@@ -15,11 +15,10 @@ public class Main {
         animals[6] = new Cat("Барсик");
         animals[7] = new Cat("Муся");
         animals[8] = new Cat("Мурка");
-        animals[9] = new Cat("Рыжык");
 
-        System.out.println("Количество животных: " + Animal.getCount());
-        System.out.println("Количество собак: " + Dog.getCount());
-        System.out.println("Количество кошек: " + Cat.getCount());
+        System.out.println("Количество животных: " + Animal.count());
+        System.out.println("Количество собак: " + Dog.count());
+        System.out.println("Количество кошек: " + Cat.count());
 
         System.out.println("---------------");
         System.out.println("Бег животных");
@@ -32,7 +31,6 @@ public class Main {
         animals[6].run(150);
         animals[7].run(250);
         animals[8].run(350);
-        animals[9].run(450);
 
         System.out.println("---------------");
         System.out.println("Плавание животных");
@@ -45,7 +43,6 @@ public class Main {
         animals[6].swim(1);
         animals[7].swim(2);
         animals[8].swim(3);
-        animals[9].swim(4);
 
 
 

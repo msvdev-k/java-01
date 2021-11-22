@@ -14,7 +14,7 @@ public class Dog extends Animal {
     }
 
 
-    public static int getCount() {
+    public static int count() {
         return dogCount;
     }
 
