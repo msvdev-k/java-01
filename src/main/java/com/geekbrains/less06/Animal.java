@@ -46,14 +46,15 @@ public class Animal {
 
     public void swim(int dist) {
 
-        if (dist <= maxSwimDist) {
-            System.out.println(name + " проплыл(а) " + dist + " м.");
+        if (maxSwimDist <= 0) {
+            System.out.println(name + " не умеет плавать!");
         }
-        else if (maxSwimDist > 0) {
-            System.out.println(name + " проплыл(а) " + maxSwimDist + " м.");
+        else if (dist > maxSwimDist) {
+            System.out.print(name + " проплыл(а) " + maxSwimDist + " м. ");
+            System.out.println(name + " больше плыть не может.");
         }
         else {
-            System.out.println(name + " не умеет плавать!");
+            System.out.println(name + " проплыл(а) " + dist + " м.");
         }
 
     }
