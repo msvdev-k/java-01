@@ -29,14 +29,15 @@ public class Animal {
 
     public void run(int dist) {
 
-        if (dist <= maxRunDist) {
-            System.out.println(name + " пробежал(а) " + dist + " м.");
+        if (maxRunDist <= 0) {
+            System.out.println(name + " не умеет бегать!");
         }
-        else if (maxRunDist > 0) {
-            System.out.println(name + " пробежал(а) " + maxRunDist + " м.");
+        else if (dist > maxRunDist) {
+            System.out.print(name + " пробежал(а) " + maxRunDist + " м. ");
+            System.out.println(name + " больше бежать не может.");
         }
         else {
-            System.out.println(name + " не умеет бегать!");
+            System.out.println(name + " пробежал(а) " + dist + " м.");
         }
 
     }
