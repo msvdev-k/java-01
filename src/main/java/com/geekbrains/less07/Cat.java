@@ -43,4 +43,9 @@ public class Cat {
         return name;
     }
 
+
+    public boolean isSatiety() {
+        return satiety;
+    }
+
 }
