@@ -10,8 +10,25 @@ public class Plate {
     }
 
 
-    public void decreaseFood(int n) {
-        food -= n;
+
+    public boolean decreaseFood(int n) {
+
+        int food = this.food - n;
+
+        if (food >= 0) {
+            this.food = food;
+            return true;
+        }
+
+        return false;
+    }
+
+
+
+    public void addFood(int food) {
+        this.food += food;
+        System.out.printf("В тарелку добавлено %s единиц еды.", food);
+        System.out.println();
     }
 
 
