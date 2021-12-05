@@ -7,12 +7,12 @@ import java.awt.event.ActionListener;
 
 public class CalculatorApp extends JFrame {
 
-    private CalculatorModel calcModel;
+    private final ISimpleCalculatorModel calcModel;
 
 
-    public CalculatorApp() {
+    public CalculatorApp(ISimpleCalculatorModel model) {
 
-        calcModel = new CalculatorModel();
+        calcModel = model;
 
         setBounds(500, 500, 240, 320);
         setTitle("Калькулятор");
@@ -40,9 +40,8 @@ public class CalculatorApp extends JFrame {
         display.setText("0");
 
         JButton[] digits = new JButton[10];
-        int i;
-        for (i = 0; i < 10; i++) {
-            digits[i] = new JButton("" + i);
+        for (int i = 0; i < 10; i++) {
+            digits[i] = new JButton(String.valueOf(i));
             digits[i].setFont(font);
             digits[i].addActionListener(new InsertDigitAction(i, display));
         }
@@ -112,7 +111,7 @@ public class CalculatorApp extends JFrame {
         btnCalc.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                calcModel.claculation();
+                calcModel.calculation();
                 display.setText(calcModel.getDisplayText());
             }
         });
@@ -214,7 +213,7 @@ public class CalculatorApp extends JFrame {
      */
     private class InsertDigitAction implements ActionListener {
 
-        private int digit;
+        private final int digit;
         JLabel display;
 
         public InsertDigitAction(int digit, JLabel display) {
