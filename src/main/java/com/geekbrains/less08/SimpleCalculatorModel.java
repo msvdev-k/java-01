@@ -1,6 +1,6 @@
 package com.geekbrains.less08;
 
-public class SimpleCalculatorModel {
+public class SimpleCalculatorModel implements ISimpleCalculatorModel{
 
     private String display;
 
@@ -21,7 +21,13 @@ public class SimpleCalculatorModel {
     /**
      * Вычислить выражение.
      */
-    public void claculation() {
+    public void calculation() {
+
+        register = operator.evaluate(Double.parseDouble(display), register);
+        display = String.valueOf(register);
+        operator = (display, register) -> display;
+        isStartNewValue = true;
+        isInsertedPoint = false;
 
     }
 
@@ -29,28 +35,32 @@ public class SimpleCalculatorModel {
      * Оператор умножения.
      */
     public void multiplication() {
-
+        calculation();
+        operator = (display, register) -> register * display;
     }
 
     /**
      * Оператор деления.
      */
     public void division() {
-
+        calculation();
+        operator = (display, register) -> register / display;
     }
 
     /**
      * Оператор сложения.
      */
     public void addition() {
-
+        calculation();
+        operator = (display, register) -> register + display;
     }
 
     /**
      * Оператор вычитания.
      */
     public void subtraction() {
-
+        calculation();
+        operator = (display, register) -> register - display;
     }
 
 
@@ -63,12 +73,7 @@ public class SimpleCalculatorModel {
         isStartNewValue = true;
         isInsertedPoint = false;
         register = 0.0;
-        operator = new Operator() {
-            @Override
-            public double evaluate(double a, double b) {
-                return a;
-            }
-        };
+        operator = (display, register) -> display;
 
 
     }
@@ -82,7 +87,7 @@ public class SimpleCalculatorModel {
 
         if (isStartNewValue) {
             if (digit > 0) {
-                display = "" + digit;
+                display = String.valueOf(digit);
                 isStartNewValue = false;
             }
         }
@@ -94,13 +99,18 @@ public class SimpleCalculatorModel {
 
 
     /**
-     * Воод десятичной точки.
+     * Ввод десятичной точки.
      */
     public void addPoint() {
         if (!isInsertedPoint) {
-            display += ".";
+            if (isStartNewValue) {
+                display = "0.";
+                isStartNewValue = false;
+            }
+            else {
+                display += ".";
+            }
             isInsertedPoint = true;
-            isStartNewValue = false;
         }
     }
 
@@ -116,7 +126,7 @@ public class SimpleCalculatorModel {
 
 
     private interface Operator {
-        public double evaluate(double a, double b);
+        double evaluate(double display, double register);
     }
 
 
